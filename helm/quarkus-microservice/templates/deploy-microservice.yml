@@ -8,7 +8,7 @@ metadata:
         stack: frontend
         source: demo
     name: {{.Release.Name}}-microservice
-    namespace: microservices
+    namespace: {{.Release.Namespace}}
 spec:
     replicas: 3
     selector:
@@ -42,7 +42,7 @@ metadata:
         release: {{.Values.releaseType}}
         version: "{{.Values.tag}}"
     name: {{.Release.Name}}-microservice-service
-    namespace: microservices
+    namespace: {{.Release.Namespace}}
 spec:
     selector:
         source: demo
@@ -61,7 +61,7 @@ metadata:
     annotations:
         nginx.ingress.kubernetes.io/rewrite-target: /$2
     name: {{.Release.Name}}-ingress
-    namespace: microservices
+    namespace: {{.Release.Namespace}}
 spec:
     rules:
         -   http:
